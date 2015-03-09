@@ -13,7 +13,7 @@ requirejs.config({
 
 // Start the main app logic.
 requirejs(['app/setFactory'],
-function (setFactory) {
+function(setFactory) {
     var speedWorkout = new setFactory(),
         setOne = speedWorkout.buildWorkout({trainingType: 'speed'});
     console.log(setOne.repetitions)
