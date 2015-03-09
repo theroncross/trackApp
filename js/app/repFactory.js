@@ -1,5 +1,4 @@
-define(['underscore', 'jquery'],
-	function (underscore, jquery) {
+define(function () {
 
 	function Rep(repSpec, defaults) {
 		this.trainingType = repSpec.trainingType;

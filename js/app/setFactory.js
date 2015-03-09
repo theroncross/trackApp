@@ -1,4 +1,4 @@
-define(['./repFactory'], 
+define('setFactory', ['./repFactory'], 
 	function(repFactory) {
 
 		function Workout(workoutSpec) {
@@ -12,7 +12,7 @@ define(['./repFactory'],
 				howMany = getNumberOfReps();
 			
 			for (var i = 0; i < howMany; i++)  {
-				var myRep = rep.repFactory.buildRep(workoutSpec);
+				var myRep = repFactory.buildRep(workoutSpec);
 				reps.push(myRep);
 			}
 			
@@ -26,7 +26,7 @@ define(['./repFactory'],
 
 		function WorkoutFactory() {};
 
-		WorkoutFactory.prototype.buildWorkout = function(workoutSpec){
+		WorkoutFactory.prototype.buildWorkout = function(workoutSpec) {
 			return new Workout(workoutSpec);
 		}
 
