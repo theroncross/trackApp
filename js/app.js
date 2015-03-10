@@ -12,12 +12,26 @@ requirejs.config({
 });
 
 // Start the main app logic.
+var setOne = {},
+    timerValue = 0;
+
 requirejs(['app/setFactory'],
-function(setFactory) {
-    var speedWorkout = new setFactory(),
-        setOne = speedWorkout.buildWorkout({trainingType: 'speed'});
-    console.log(setOne.repetitions)
+    function(setFactory) {
+        setOne = setFactory.buildSetOfReps({trainingType: 'speed'});
+        console.log(setOne.reps);
 });
+
+function timerStart() {
+    timerValue = new Date();
+    $("#timerOutput").text(timerValue.getTime());
+}
+
+function timerStop() {
+    var newTimerValue = new Date();
+    timerValue = (newTimerValue.getTime() - timerValue) / 1000;
+    console.log(Math.round(timerValue));
+    $("#timerOutput").text(timerValue);
+}
 
 
 

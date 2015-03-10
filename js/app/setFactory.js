@@ -1,34 +1,34 @@
-define('setFactory', ['./repFactory'], 
+define(['app/repFactory'], 
 	function(repFactory) {
 
-		function Workout(workoutSpec) {
-			this.reps = this.getReps(workoutSpec);
-			this.repsInWorkout = this.reps.length;
+		function SetOfReps(setOfRepsSpec) {
+			this.reps = this.getReps(setOfRepsSpec);
+			this.howManyRepsInSet = this.reps.length;
 			this.trainingType = this.reps[0].trainingType;
 		}
 
-		Workout.prototype.getReps = function(workoutSpec) {
+		SetOfReps.prototype.getReps = function(setOfRepsSpec) {
 			var reps = [],
 				howMany = getNumberOfReps();
 			
 			for (var i = 0; i < howMany; i++)  {
-				var myRep = repFactory.buildRep(workoutSpec);
+				var myRep = repFactory.buildRep(setOfRepsSpec);
 				reps.push(myRep);
 			}
 			
 			return reps;
 
 			function getNumberOfReps() {
-				var exampleRep = repFactory.buildRep(workoutSpec);
+				var exampleRep = repFactory.buildRep(setOfRepsSpec);
 				return Math.floor(exampleRep.totalDistance / exampleRep.distance);
 			}
 		}
 
-		function WorkoutFactory() {};
-
-		WorkoutFactory.prototype.buildWorkout = function(workoutSpec) {
-			return new Workout(workoutSpec);
+		var buildSetOfReps = function(setOfRepsSpec) {
+			return new SetOfReps(setOfRepsSpec);
 		}
 
-	return new WorkoutFactory();
+		return {
+			buildSetOfReps: buildSetOfReps
+		};
 });

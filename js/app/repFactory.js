@@ -1,4 +1,4 @@
-define(function () {
+define(['underscore', 'jquery'], function () {
 
 	function Rep(repSpec, defaults) {
 		this.trainingType = repSpec.trainingType;
@@ -29,7 +29,6 @@ define(function () {
 			rest: 240
 		};
 		Rep.call(this, repSpec, defaults);
-
 	}
 
 	Speed.prototype = Object.create(Rep.prototype);
